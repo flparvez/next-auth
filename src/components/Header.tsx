@@ -1,10 +1,12 @@
 import { UserButton } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server';
 
 import Link from 'next/link'
 import React from 'react'
 
 
 function Header() {
+    const { userId } = auth();
   return (
 <div className='px-5'>
     <nav className="z-10 w-full ">
@@ -40,26 +42,25 @@ function Header() {
                         
                         <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
                             
-                            <li>
-                               
-                                <div className=" md:block md:px-4 hidden transition hover:text-primary ">
-                                    Profile
-                    <UserButton/>
-                    </div>
-                                
-                            </li> 
-                            
-                              <li>
-                                <a href="/sign-in" className="block md:px-4 transition hover:text-primary">
-                                    <span>Login</span>
-                                </a>
-                            </li>
-                         
-                            <li>
-                                <a href="/dashboard" className="block md:px-4 transition hover:text-primary">
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
+                        {!userId ? (
+            <>
+              <Link href="/sign-in">
+                <li>Login</li>
+              </Link>
+              <Link href="/sign-up">
+                <li>Sign Up</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/profile">
+                <li>Profile</li>
+              </Link>
+              <li className="flex items-center">
+                <UserButton />
+              </li>
+            </>
+          )}
                             <li>
                                 <a href="#" className="block md:px-4 transition hover:text-primary">
                                     <span>Blog</span>
