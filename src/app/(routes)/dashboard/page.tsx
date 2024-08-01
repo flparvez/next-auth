@@ -2,14 +2,17 @@
 
 import Header from '@/components/Header'
 import { UserButton } from '@clerk/nextjs'
-import React, { useEffect } from 'react'
+
+import React from 'react'
 
 
 function Dashboard() {
-  
+ 
+
   return (
     <div className='flex justify-center items-center'>
-     <UserButton/>
+
+     <h2>User Dashboard</h2>
       
 
      
