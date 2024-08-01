@@ -4,14 +4,15 @@ import React from "react";
 
 const ClientPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
-
+console.log(user)
   if (!isLoaded || !isSignedIn) {
     return null;
+    
   }
-  console.log(user)
+
   return (
     <div className="h-full flex flex-col items-center justify-center text-2xl">
-      Hello, {user.firstName} welcome to NextAuth
+      Hello, {user.username} welcome to NextAuth
     </div>
   );
 };
