@@ -8,9 +8,10 @@ const ClientPage = () => {
   if (!isLoaded || !isSignedIn) {
     return null;
   }
+  console.log(user)
   return (
     <div className="h-full flex flex-col items-center justify-center text-2xl">
-      Hello, {user.firstName} welcome to Clerk
+      Hello, {user.firstName} welcome to NextAuth
     </div>
   );
 };

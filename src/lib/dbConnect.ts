@@ -21,11 +21,13 @@ export const connect = async () => {
 
   cached.promise =
     cached.promise ||
-    mongoose.connect(MONGODB_URL, {
-      dbName: "clerkauthv5",
-      bufferCommands: false,
-      connectTimeoutMS: 30000,
-    });
+    mongoose.connect(MONGODB_URL);
+    
+    // mongoose.connect(MONGODB_URL, {
+    //   dbName: "authnext",
+    //   bufferCommands: false,
+    //   connectTimeoutMS: 30000,
+    // });
 
   cached.conn = await cached.promise;
 
